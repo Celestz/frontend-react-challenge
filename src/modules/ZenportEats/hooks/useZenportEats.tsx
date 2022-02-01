@@ -69,14 +69,17 @@ export const ZenportEatsProvider = ({ children }: Props) => {
     });
   };
 
-  const handlePersonDelete = useCallback((personIdx: number) => {
-    const newOrder = {
-      ...order,
-      orders: order.orders.filter((_, orderIdx) => orderIdx !== personIdx),
-    };
+  const handlePersonDelete = useCallback(
+    (personIdx: number) => {
+      const newOrder = {
+        ...order,
+        orders: order.orders.filter((_, orderIdx) => orderIdx !== personIdx),
+      };
 
-    setOrder(newOrder);
-  }, []);
+      setOrder(newOrder);
+    },
+    [order]
+  );
 
   const handlePersonAdd = useCallback(() => {
     const newOrder = {
@@ -89,9 +92,8 @@ export const ZenportEatsProvider = ({ children }: Props) => {
         },
       ],
     };
-
     setOrder(newOrder);
-  }, []);
+  }, [order]);
 
   return (
     <ZenportEatsContext.Provider
