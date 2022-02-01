@@ -6,6 +6,7 @@ import FoodTypeTabs from '@components/FoodTypeTabs';
 import OrderDetailCard from '@components/OrderDetailCard/OrderDetailCard';
 import OrderTotalCard from '@components/OrderTotalCard';
 import { useZenportEats } from '@modules/ZenportEats/hooks/useZenportEats';
+import { useMemo, useState } from 'react';
 
 const Frame2 = () => {
   const {
@@ -18,12 +19,22 @@ const Frame2 = () => {
     handlePersonAdd,
   } = useZenportEats();
 
+  const [selectedTab, setSelectedTab] = useState<string | null>(null);
+
+  const foodList = useMemo(() => {
+    if (selectedTab) {
+      return { [selectedTab]: foods[selectedTab] };
+    }
+
+    return foods;
+  }, [selectedTab]);
+
   return (
     <ContainerStyle>
       <SectionStyle $padding $width={350}>
-        <FoodTypeTabs />
+        <FoodTypeTabs selectedTab={selectedTab} setSelectedTab={setSelectedTab} />
         <FoodSelectionContainer>
-          {Object.keys(foods).map((foodType) => {
+          {Object.keys(foodList).map((foodType) => {
             return (
               <FoodSelection
                 key={foodType}

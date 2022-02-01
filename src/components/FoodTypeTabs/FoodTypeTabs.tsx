@@ -3,7 +3,6 @@ import { TabPaneImageStyle, TabsStyle } from './styles';
 import { Tabs, Typography } from 'antd';
 
 import Image from 'next/image';
-import { useState } from 'react';
 
 const { TabPane } = Tabs;
 
@@ -14,9 +13,7 @@ const images = {
   Nigiri: '/icons/nigiri.png',
 };
 
-const FoodTypeTabs = () => {
-  const [selectedTab, setSelectedTab] = useState<string | null>(null);
-
+const FoodTypeTabs = ({ selectedTab, setSelectedTab }) => {
   return (
     <TabsStyle
       tabBarGutter={25}
