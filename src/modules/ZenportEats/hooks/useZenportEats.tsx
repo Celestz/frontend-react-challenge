@@ -84,10 +84,11 @@ export const ZenportEatsProvider = ({ children }: Props) => {
   const handlePersonAdd = useCallback(() => {
     const newOrder = {
       ...order,
+      numPeople: order.numPeople + 1,
       orders: [
         ...order.orders,
         {
-          name: `Person ${order.orders.length + 1}`,
+          name: `Person ${order.numPeople + 1}`,
           items: [],
         },
       ],
