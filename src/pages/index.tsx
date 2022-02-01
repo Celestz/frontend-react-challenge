@@ -15,7 +15,8 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Header
-        onIconClick={() => {
+        onIconClick={(e: React.MouseEvent<HTMLElement>) => {
+          e.stopPropagation();
           setPage(1);
         }}
       />

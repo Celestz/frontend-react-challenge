@@ -20,7 +20,7 @@ const LogoWrapperStyle = styled.span`
 `;
 
 interface Props {
-  onIconClick: () => void;
+  onIconClick: (e: React.MouseEvent<HTMLElement>) => void;
 }
 
 const Header = ({ onIconClick }: Props) => {
